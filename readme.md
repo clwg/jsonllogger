@@ -121,8 +121,4 @@ func yourFunction(logger *jsonllogger.Logger) {
 
 ## License
 
-This package is licensed under [Your License Here].
-
----
-
-This README provides a comprehensive guide for users to install, configure, and integrate the `RotatingCompressJSONLLogger` into their Go applications. Make sure to replace placeholders like `github.com/yourusername/jsonllogger` and `[Your License Here]` with your actual repository URL and chosen license.
+This package is licensed under BSD 3-Clause License.
