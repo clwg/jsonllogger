@@ -25,6 +25,7 @@ type Logger struct {
 	mu          sync.Mutex
 }
 
+// NewLogger creates a new logger instance
 func NewLogger(config LoggerConfig) (*Logger, error) {
 	logger := &Logger{
 		config: config,
@@ -37,6 +38,7 @@ func NewLogger(config LoggerConfig) (*Logger, error) {
 	return logger, nil
 }
 
+// Log logs the given object to the current log file
 func (l *Logger) Log(obj interface{}) error {
 	l.mu.Lock()
 	defer l.mu.Unlock()
@@ -110,6 +112,7 @@ func (l *Logger) rotateFile() error {
 	return nil
 }
 
+// timeBasedRotation rotates the log file based on the given rotation time
 func (l *Logger) timeBasedRotation() {
 	for range time.Tick(l.config.RotationTime) {
 		l.mu.Lock()
