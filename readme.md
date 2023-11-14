@@ -58,10 +58,6 @@ if err != nil {
 }
 ```
 
-## Integration in Your Application
-
-Integrate the logger into your application logic. For example, if you have a function that needs to log detailed information, you can pass the logger instance to it:
-
 ## Example
 
 Here's a complete example of setting up and using the logger:
