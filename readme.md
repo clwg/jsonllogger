@@ -1,6 +1,13 @@
 # jsonllogger
 
-jsonllogger is a Go package for logging with features like log rotation, gzip compression, and JSON Lines (JSONL) format logging. It's ideal for applications that require efficient logging with automatic log file management.
+The jsonllogger package provides a structured logging solution in Go, specifically designed for managing JSON log files. It supports automatic log file rotation based on either the number of log lines or a specified time duration. The package also includes features for file compression and organized storage.
+
+## Features
+- Configurable Logging: Set parameters such as log directory, filename prefix, maximum lines per file, and log rotation time.
+- Automatic Log Rotation: Log files are rotated either after reaching a maximum line count or after a specified time duration.
+- Compression and Archiving: Old log files are automatically compressed using gzip and stored in an archive directory within the specified log directory.
+- Concurrency Safe: Thread-safe operations ensure that logging can be used in concurrent applications without data races.
+
 
 ## Installation
 
@@ -11,15 +18,9 @@ go get github.com/clwg/jsonllogger
 ```
 
 
-## Configuration
+## Usage
 
-First, import the package in your Go file:
-
-```go
-import "github.com/clwg/jsonllogger"
-```
-
-Configure the logger by creating an instance of `LoggerConfig`:
+Define the logger configuration using the LoggerConfig struct:
 
 ```go
 config := jsonllogger.LoggerConfig{
@@ -35,14 +36,14 @@ config := jsonllogger.LoggerConfig{
 - `MaxLines`: Maximum number of lines in a log file before it rotates.
 - `RotationTime`: Duration after which the log file will rotate.
 
-## Creating a Logger Instance
+## Creating a New Logger
 
-To create a logger instance, use `NewLogger`:
+Instantiate a new logger with the configuration:
 
 ```go
 logger, err := jsonllogger.NewLogger(config)
 if err != nil {
-    panic(err) // Handle error appropriately
+    // Handle error
 }
 ```
 
@@ -57,17 +58,9 @@ if err != nil {
 }
 ```
 
-Replace `yourDataStructure` with the data you want to log.
-
 ## Integration in Your Application
 
 Integrate the logger into your application logic. For example, if you have a function that needs to log detailed information, you can pass the logger instance to it:
-
-```go
-go yourFunction(logger) // Replace 'yourFunction' with your actual function
-```
-
-Ensure that `yourFunction` accepts a `*jsonllogger.Logger` parameter and uses its `Log` method to log messages.
 
 ## Example
 
