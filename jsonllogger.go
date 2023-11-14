@@ -84,8 +84,8 @@ func (l *Logger) rotateFile() error {
 			return err
 		}
 		writer := gzip.NewWriter(gzipFile)
-		l.currentFile.Seek(0, 0) // Move to start of file
-		if _, err := io.Copy(writer, l.currentFile); err != nil {
+		l.currentFile.Seek(0, 0)                                  // Move to start of file
+		if _, err := io.Copy(writer, l.currentFile); err != nil { // Copy the contents of the file to the gzip writer
 			return err
 		}
 		writer.Close()
